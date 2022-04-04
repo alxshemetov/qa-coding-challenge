@@ -29,7 +29,7 @@ jobs:
             - target/
 
   test:
-    parallelism: 2
+    parallelism: 1
     docker:
       - image: cimg/openjdk:17.0.1
     steps:
@@ -41,8 +41,14 @@ jobs:
       - attach_workspace:
           at: ./target
       - run: mvn clean test
+      - run:
+          name: Save test results
+          command: |
+            mkdir -p ~/test-results/junit/
+            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
+          when: always
       - store_test_results:
-          path: target/surefire-reports
+          path: ~/test-results
       - store_artifacts:
           path: target/site/jacoco/index.html
 

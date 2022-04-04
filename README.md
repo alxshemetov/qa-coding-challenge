@@ -1,4 +1,5 @@
 # qa-coding-challenge
+[![CircleCI](https://circleci.com/gh/alxshemetov/qa-coding-challenge/tree/master.svg?style=svg)](https://circleci.com/gh/alxshemetov/qa-coding-challenge/tree/master)
 
 ## Tech stack:
 
