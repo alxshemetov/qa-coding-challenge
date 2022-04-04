@@ -8,19 +8,19 @@ import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
 
-public class UsersComponent {
+public class CommentsComponent {
 
-    @Step("GET /users")
-    public static Response getUsers(HashMap<String, ?> paramsMap) {
-        Response usersResponse = given()
+    @Step("GET /comments")
+    public static Response getComments(HashMap<String, ?> paramsMap) {
+        Response commentsResponse = given()
                 .spec(RequestSpec.getRequestSpec())
                 .params(paramsMap)
                 .when()
-                .get("/users");
-        usersResponse
+                .get("/comments");
+        commentsResponse
                 .then()
                 .assertThat()
                 .statusCode(200);
-        return usersResponse;
+        return commentsResponse;
     }
 }
